@@ -5,7 +5,7 @@ public class openDoor : MonoBehaviour {
 
 
     private bool displayText;
-    public float animTimer = 2.0f;
+    public float animTimer = 0.0f;
     public string dest = "";
 
 	// Use this for initialization
@@ -15,15 +15,29 @@ public class openDoor : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    
+	    if(displayText)
+        {
+            Animation spr = gameObject.GetComponentInChildren<Animation>();
+            spr.enabled = true;
+            spr.Play();
+        }
+        else
+        {
+            Animation spr = gameObject.GetComponentInChildren<Animation>();
+            
+            spr.enabled = false;
+        }
 	}
 
-    void onTriggerEnter2D(Collision2D coll)
+    void OnTriggerEnter2D(Collider2D coll)
     {
-
+        if (coll.gameObject.tag == "Player")
+        {
+            displayText = true;
+        }
     }
 
-    void onTriggerStay2D(Collision2D coll)
+    void OnTriggerStay2D(Collider2D coll)
     {
         if(coll.gameObject.tag == "Player")
         {
@@ -34,15 +48,17 @@ public class openDoor : MonoBehaviour {
         }
     }
 
-    void onTriggerExit2D(Collision2D coll)
+    void OnTriggerExit2D(Collider2D coll)
     {
-
+        if (coll.gameObject.tag == "Player")
+        {
+            displayText = false;
+        }
     }
 
 
     void open()
     {
-
-    
+        Application.LoadLevel(dest);
     }
 }
