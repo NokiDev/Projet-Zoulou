@@ -24,7 +24,7 @@ public class openDoor : MonoBehaviour {
         else
         {
             Animation spr = gameObject.GetComponentInChildren<Animation>();
-            
+            spr.Stop();
             spr.enabled = false;
         }
 	}
