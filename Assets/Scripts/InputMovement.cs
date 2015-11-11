@@ -4,8 +4,11 @@ using System.Collections;
 public class InputMovement : MonoBehaviour {
 
     // Use this for initialization
-    public float jump_force = 300.0f;
+    public float jump_force = 500.0f;
 
+    public bool has_double_jump = false;
+    public bool has_jumped = false;
+    private bool can_jump = true;
     private Rigidbody2D rigidBody;
 
 	void Start () {
@@ -19,6 +22,39 @@ public class InputMovement : MonoBehaviour {
         if (Input.GetKey("right"))
             gameObject.transform.position += Vector3.right * 0.1f;
         if (Input.GetKeyDown("space"))
-            rigidBody.AddForce(new Vector2(0.0f,jump_force)); 
+        {
+            if(can_jump)
+            {
+                if (!has_jumped)
+                {
+                    can_jump = false;
+                    has_jumped = true;
+                    if (has_double_jump)
+                    {
+                        can_jump = true;
+                    }
+                }
+                else
+                    can_jump = false;
+                rigidBody.AddForce(new Vector2(0.0f, jump_force));
+            }
+        } 
 	}
+
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if(coll.gameObject.tag == "Ground")
+        {
+            if (has_jumped)
+            {
+                can_jump = true;
+                has_jumped = false;
+            }
+              
+        }
+
+    }
+
+
 }
