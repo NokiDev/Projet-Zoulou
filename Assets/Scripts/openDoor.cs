@@ -3,29 +3,18 @@ using System.Collections;
 
 public class openDoor : MonoBehaviour {
 
-
-    private bool displayText;
-    public float animTimer = 0.0f;
     public string dest = "";
 
 	// Use this for initialization
 	void Start () {
-        displayText = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	    if(displayText)
+        Animation anim = gameObject.GetComponentInChildren<Animation>();
+        if (anim.enabled)
         {
-            Animation spr = gameObject.GetComponentInChildren<Animation>();
-            spr.enabled = true;
-            spr.Play();
-        }
-        else
-        {
-            Animation spr = gameObject.GetComponentInChildren<Animation>();
-            spr.Stop();
-            spr.enabled = false;
+            anim.Play();
         }
 	}
 
@@ -33,7 +22,8 @@ public class openDoor : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Player")
         {
-            displayText = true;
+            Animation anim = gameObject.GetComponentInChildren<Animation>();
+            anim.enabled = true;
         }
     }
 
@@ -52,7 +42,14 @@ public class openDoor : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Player")
         {
-            displayText = false;
+            Animation anim = gameObject.GetComponentInChildren<Animation>();
+            anim.Stop();
+            anim.enabled = false;
+            SpriteRenderer[] sprs = anim.GetComponentsInChildren<SpriteRenderer>();
+            foreach (SpriteRenderer spr in sprs)
+            {
+                spr.enabled = false;
+            }
         }
     }
 
