@@ -37,8 +37,8 @@ public class bouger : MonoBehaviour {
         if (temp.transform.position.x > enemi.transform.position.x - 0.1 && temp.transform.position.x < enemi.transform.position.x + 0.1 && temp.transform.position.y < 0.4  )
 
         {
-                //temp.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + velocity.x*3 );
-                temp.transform.Translate(Vector3.up);
+            //temp.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + velocity.x*3 );
+            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0.0f, 210.0f));
             p++;
             if(p>1)
             {
