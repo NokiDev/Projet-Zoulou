@@ -15,6 +15,7 @@
 *.rtf
 #other stuff
 Library/
+Library\
 Temp/
 *.pidb
 .DS_Store
