@@ -1,44 +1,49 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
-
-# Folder config file
-Desktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
-
-# =========================
-# Operating System Files
-# =========================
-
-# OSX
-# =========================
-
+*.bmp
+*.BMP
+*.psd
+*.PSD
+*.tif
+*.TIF
+*.tiff
+*.TIFF
+*.pdf
+*.PDF
+*.ttf
+*.TTF
+*.ZIP
+*.zip
+*.rtf
+#Unity files
+*.cginc
+*.prefab
+*.unity
+*.unity3d
+*.shader
+*.asset
+*.GUISkin
+*.mat
+*.rendertexture
+*.physicmaterial
+*.flare:
+#3D tool files
+*.fbx
+*.FBX
+*.anim
+*.fbm
+*.exr
+*.otf
+*.max
+#Media files
+*.ogg
+*.ogv
+*.raw
+*.wav
+*.WAV
+*.wave
+*.MOV
+*.mov
+#other stuff
+Library/
+Temp/
+*.pidb
 .DS_Store
-.AppleDouble
-.LSOverride
-
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-Temp/UnityLockfile
