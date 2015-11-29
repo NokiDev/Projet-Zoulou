@@ -17,7 +17,7 @@ public class HealthManager : MonoBehaviour {
 
     void Awake()
     {
-        healthBar = transform.Find("HealthBar").GetComponent<SpriteRenderer>();
+        healthBar = GameObject.Find("HealthBar").GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         rigidBody2D = GetComponent<Rigidbody2D>();
         healthScale = healthBar.transform.localScale;
@@ -33,8 +33,9 @@ public class HealthManager : MonoBehaviour {
             //anim.SetTrigger("Die");
         }
     }
-
-    public void TakeDamage(GameObject damageSource, float damageAmount)
+    
+    //Fonction public appelé lors d'une prise de dégat
+    public void TakeDamage(DamageSource damageSource)
     {
         if (Time.time > lastHitTime + invicibilityTime)
         {
@@ -46,21 +47,14 @@ public class HealthManager : MonoBehaviour {
                 Vector3 hurtVector = transform.position - damageSource.transform.position + Vector3.up * 5f;
 
                 // Ajoute une force en direction du vecteur multiplié par la force de dégats
-                rigidBody2D.AddForce(hurtVector * hurtForce);
+                rigidBody2D.AddForce(hurtVector * damageSource.hurtForce);
 
                 // Réduit la vie du joueur de 10
-                health -= damageAmount;
+                health -= damageSource.damage;
 
                 // Update la barre de vie
                 UpdateHealthBar();
                 lastHitTime = Time.time;
-            }
-            // Si le joueur n'as plus de vie, il tombe (façon mario)
-            else
-            {
-                // ... Active l'état de mort dans l'animator
-                Destroy(gameObject);
-                //anim.SetTrigger("Die");
             }
         }
     }

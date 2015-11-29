@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SwordScript : MonoBehaviour {
 
-    public float range = 2f;
-    public float damage = 3f;
+public class SwordScript : DamageSource {
+
     private PlayerControl playerCtrl;
     private Animator anim;
-    private bool attack;
 
 
 	// Use this for initialization
@@ -23,7 +21,7 @@ public class SwordScript : MonoBehaviour {
         else
             range = 0.3f;
 
-        if(Input.GetButton("Fire1"))
+        if(Input.GetButton("Fire1") && !attackLocked)
         {
             attack = true;
         }
@@ -37,6 +35,7 @@ public class SwordScript : MonoBehaviour {
             anim.SetTrigger("Attack");
             Attack();
             attack = false;
+            LockAttack();
         }
     }
 
@@ -46,7 +45,7 @@ public class SwordScript : MonoBehaviour {
         foreach(Collider2D enemy in enemies)
         {
             HealthManager healthManager = enemy.gameObject.GetComponent<HealthManager>();
-            healthManager.TakeDamage(gameObject, damage);
+            healthManager.TakeDamage(this);
         }
     }
 }

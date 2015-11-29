@@ -45,19 +45,18 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\FollowCamera.cs" />
-     <Compile Include="Assets\Scripts\CharacterLife.cs" />
-     <Compile Include="Assets\Scripts\EnemiesScript\HealthManager.cs" />
-     <Compile Include="Assets\Scripts\EnemiesScript\shootProjectile.cs" />
-     <Compile Include="Assets\Scripts\Follow.cs" />
+     <Compile Include="Assets\Scripts\DamageSource.cs" />
+     <Compile Include="Assets\Scripts\Entities\HealthManager.cs" />
+     <Compile Include="Assets\Scripts\Entities\shootProjectile.cs" />
+     <Compile Include="Assets\Scripts\ForegroundInteractionsScripts\openDoor.cs" />
+     <Compile Include="Assets\Scripts\IA\bouger.cs" />
      <Compile Include="Assets\Scripts\IA\movingIA.cs" />
+     <Compile Include="Assets\Scripts\IA\tourner.cs" />
+     <Compile Include="Assets\Scripts\IA\zone.cs" />
      <Compile Include="Assets\Scripts\PlayerScripts\PlayerControl.cs" />
-     <Compile Include="Assets\Scripts\PlayerScripts\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\PlayerScripts\SwordScript.cs" />
-     <Compile Include="Assets\Scripts\openDoor.cs" />
-     <Compile Include="Assets\Scripts\tourner.cs" />
-     <Compile Include="Assets\bouger.cs" />
-     <Compile Include="Assets\zone.cs" />
+     <Compile Include="Assets\Scripts\ProjectileSource.cs" />
+     <Compile Include="Assets\Scripts\UI\Follow.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>Z:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
