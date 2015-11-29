@@ -47,11 +47,13 @@
   <ItemGroup>
      <Compile Include="Assets\FollowCamera.cs" />
      <Compile Include="Assets\Scripts\CharacterLife.cs" />
+     <Compile Include="Assets\Scripts\EnemiesScript\HealthManager.cs" />
      <Compile Include="Assets\Scripts\EnemiesScript\shootProjectile.cs" />
      <Compile Include="Assets\Scripts\Follow.cs" />
      <Compile Include="Assets\Scripts\IA\movingIA.cs" />
      <Compile Include="Assets\Scripts\PlayerScripts\PlayerControl.cs" />
      <Compile Include="Assets\Scripts\PlayerScripts\PlayerHealth.cs" />
+     <Compile Include="Assets\Scripts\PlayerScripts\SwordScript.cs" />
      <Compile Include="Assets\Scripts\openDoor.cs" />
      <Compile Include="Assets\Scripts\tourner.cs" />
      <Compile Include="Assets\bouger.cs" />
