@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FollowPlayer : MonoBehaviour {
+public class Follow : MonoBehaviour {
 
     public GameObject followedEntity;
+    public Vector3 offset;
 
 	// Use this for initialization
 	void Start () {
@@ -12,6 +13,6 @@ public class FollowPlayer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        gameObject.transform.position = new Vector3(followedEntity.transform.position.x, followedEntity.transform.position.y, gameObject.transform.position.z);
+        transform.position = followedEntity.transform.position + offset;
 	}
 }

@@ -45,26 +45,22 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\FollowCamera.cs" />
      <Compile Include="Assets\Scripts\CharacterLife.cs" />
      <Compile Include="Assets\Scripts\EnemiesScript\shootProjectile.cs" />
-     <Compile Include="Assets\Scripts\FollowPlayer.cs" />
+     <Compile Include="Assets\Scripts\Follow.cs" />
      <Compile Include="Assets\Scripts\IA\movingIA.cs" />
-     <Compile Include="Assets\Scripts\PlayerScripts\InputMovement.cs" />
+     <Compile Include="Assets\Scripts\PlayerScripts\PlayerControl.cs" />
+     <Compile Include="Assets\Scripts\PlayerScripts\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\openDoor.cs" />
      <Compile Include="Assets\Scripts\tourner.cs" />
      <Compile Include="Assets\bouger.cs" />
      <Compile Include="Assets\zone.cs" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>Z:/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>Z:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>Z:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>Z:/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>Z:/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
