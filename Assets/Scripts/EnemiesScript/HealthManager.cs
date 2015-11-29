@@ -23,6 +23,17 @@ public class HealthManager : MonoBehaviour {
         healthScale = healthBar.transform.localScale;
     }
 
+    void Update()
+    {
+        
+        if(health <=0)
+        {
+            // ... Active l'état de mort dans l'animator
+            Destroy(gameObject);
+            //anim.SetTrigger("Die");
+        }
+    }
+
     public void TakeDamage(GameObject damageSource, float damageAmount)
     {
         if (Time.time > lastHitTime + invicibilityTime)
@@ -48,7 +59,8 @@ public class HealthManager : MonoBehaviour {
             else
             {
                 // ... Active l'état de mort dans l'animator
-                anim.SetTrigger("Die");
+                Destroy(gameObject);
+                //anim.SetTrigger("Die");
             }
         }
     }

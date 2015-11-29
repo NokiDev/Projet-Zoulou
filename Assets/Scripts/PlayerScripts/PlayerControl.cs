@@ -40,8 +40,6 @@ public class PlayerControl : MonoBehaviour {
         //Récupère la valeur de l'input horizontal (joystick, ou fleche gauche et droite)
         float h = Input.GetAxis("Horizontal");
 
-        print(h);
-
         //Donne a l'animator une information sur la vittesse du joueur
         anim.SetFloat("Speed", Mathf.Abs(h));
 
