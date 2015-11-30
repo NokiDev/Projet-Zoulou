@@ -54,7 +54,7 @@ public class PlayerControl : MonoBehaviour {
         //Donne a l'animator une information sur la vittesse du joueur
         anim.SetFloat("Speed", Mathf.Abs(h));
         //Vitesse verticale
-        anim.SetFloat("vSPeed", rigidBody2D.velocity.y);
+        anim.SetFloat("vSpeed", rigidBody2D.velocity.y);
 
         //Si le joueur change de direction, ou qu'il n'as pas atteint sa vitesse Max
         if ((h * rigidBody2D.velocity.x) < maxSpeed)
