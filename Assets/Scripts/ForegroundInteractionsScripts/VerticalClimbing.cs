@@ -31,6 +31,11 @@ public class VerticalClimbing : MonoBehaviour {
         if (Mathf.Abs(v) > 0)
         {
             climbing = true;
+            Collider2D[] cols = player.GetComponents<Collider2D>();
+            foreach (Collider2D c in cols)
+            {
+                c.isTrigger = true;
+            }
             player.GetComponent<PlayerControl>().enabled = false;
             Rigidbody2D rigidBody = player.GetComponent<Rigidbody2D>();
             player.GetComponent<Animator>().SetBool("IsClimbing", climbing);
@@ -49,6 +54,11 @@ public class VerticalClimbing : MonoBehaviour {
         rigidBody.gravityScale = 1f;
         player.GetComponent<PlayerControl>().enabled = true;
         player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0);
+        Collider2D[] cols = player.GetComponents<Collider2D>();
+        foreach (Collider2D c in cols)
+        {
+            c.isTrigger = false;
+        }
     }
 
 }
