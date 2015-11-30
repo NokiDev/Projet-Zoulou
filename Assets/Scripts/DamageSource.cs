@@ -8,6 +8,7 @@ public class DamageSource : MonoBehaviour {
     public float damage = 3f; //Dégats de la source
     public float hurtForce = 50f; //Force de poussée lors d'une prise de dégats
     public float delay = 1f; //Delai entre deux attaque
+    public LayerMask targetLayer;
 
     protected bool attack;
     protected bool attackLocked;

@@ -8,7 +8,8 @@ public class HealthManager : MonoBehaviour {
 
     public float hurtForce = 10f; //Force ajouté lorsque le joueur prends un coup
 
-    private SpriteRenderer healthBar; //Référence au sprite de la barre de vie
+    public GameObject healthBarGameObj; //Référence au sprite de la barre de vie
+    private SpriteRenderer healthBar;
     private float lastHitTime;//Dernière fois ou le joueur s'est fait touché
     private Vector3 healthScale;//Scale pour la bare de vie
     private Animator anim;//Référence a l'animator
@@ -17,7 +18,7 @@ public class HealthManager : MonoBehaviour {
 
     void Awake()
     {
-        healthBar = GameObject.Find("HealthBar").GetComponent<SpriteRenderer>();
+        healthBar = healthBarGameObj.GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         rigidBody2D = GetComponent<Rigidbody2D>();
         healthScale = healthBar.transform.localScale;

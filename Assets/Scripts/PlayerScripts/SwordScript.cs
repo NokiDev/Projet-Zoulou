@@ -41,7 +41,7 @@ public class SwordScript : DamageSource {
 
     void  Attack()
     {
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, range, 1 << LayerMask.NameToLayer("Enemies"));
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, range, targetLayer);
         foreach(Collider2D enemy in enemies)
         {
             HealthManager healthManager = enemy.gameObject.GetComponent<HealthManager>();
