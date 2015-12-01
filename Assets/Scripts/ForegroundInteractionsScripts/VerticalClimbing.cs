@@ -4,80 +4,84 @@ using System.Collections;
 public class VerticalClimbing : MonoBehaviour {
 
 
-    private GameObject player;
-    private IsGroundedScript isGrounded;
+    private PlayerScript m_Player;      //Référence au script playerScript
+    [SerializeField]
+    private LayerMask m_Mask;           //Masque pour le calque du joueur
 
-    private bool climbLock;
+    private Transform m_AtTopCheck;     // Position ou l'on teste si le joueur touche le sol
+    const float k_AtTopRadius = .2f;    // Rayon du cercle de collision pour savoir si le joueur touche le sol
+    [SerializeField]
+    private bool m_AtTop;
 
-    private bool climbing = false;
-    public float speed = 3f;
+    private Transform m_AtBotCheck;     // Position ou l'on teste si le joueur touche le sol
+    const float k_AtBotRadius = .2f;    // Rayon du cercle de collision pour savoir si le joueur touche le sol
+    [SerializeField]
+    private bool m_AtBot;               //Indique si le joueur est en bas de l'échelle
+    [SerializeField]
+    private bool m_GoTop = false;       //Indique si le joueur va en haut
+    [SerializeField]
+    private bool m_GoBot = false;       //Indique si le joueur va en bas
+    [SerializeField]
+    private bool m_OnLadder = false;    //Indque si le joueur est sur l'echelle
 
 	// Use this for initialization
 	void Awake () {
-        player = GameObject.Find("Character");
-        isGrounded = player.GetComponent<IsGroundedScript>();
-	}
+        //Initialise les références
+        m_Player = GameObject.Find("Character").GetComponent<PlayerScript>();
+        m_AtTopCheck = transform.Find("Top");
+        m_AtBotCheck = transform.Find("Bot");
+    }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (isGrounded.grounded)
+        //Verifie si le joueur est en haut
+        m_AtTop = Physics2D.OverlapCircle(m_AtTopCheck.position, k_AtTopRadius, m_Mask);
+        //Verifie si le joueur est en bas
+        m_AtBot = Physics2D.OverlapCircle(m_AtBotCheck.position, k_AtBotRadius, m_Mask);
+        //Verifie si le joueur est sur l'echelle
+        m_OnLadder = Physics2D.Linecast(m_AtBotCheck.position, m_AtTopCheck.position, m_Mask);
+
+        //Si le joueur est en haut et ne vas pas en bas, 
+        //ou si le joueur est en bas mais ne vas pas en haut ou si le joueur n'est pas sur l'echelle
+        if ((m_AtTop && !m_GoBot) || (m_AtBot && !m_GoTop) || !m_OnLadder)
         {
-            StopClimb();
+            //On arrete de grimper
+            StopClimbing();
         }
     }
-    
+
     void OnTriggerStay2D(Collider2D coll)
     {
-        Debug.Log(" TriggerStay2D");
-        float v = Input.GetAxis("Vertical");
-        print(v);
-        if (Mathf.Abs(v) > 0 && climbLock == false)
+        float h = Input.GetAxis("Vertical");
+        //Le joueur ne peut grimper que si il est sur l'echelle...
+        if (m_OnLadder)
         {
-            climbing = true;
-            Collider2D[] cols = player.GetComponents<Collider2D>();
-            foreach (Collider2D c in cols)
+            //... et qu'il va en haut ou en bas
+            m_GoBot = false;
+            m_GoTop = false;
+            if (h > 0 && !m_AtTop)
             {
-                c.isTrigger = true;
+                m_Player.Climb();
+                m_GoTop = true;
             }
-            Rigidbody2D rigidBody = player.GetComponent<Rigidbody2D>();
-            player.GetComponent<Animator>().SetBool("IsClimbing", climbing);
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -2f);
-            rigidBody.velocity = new Vector2(0f, 0f);
-            rigidBody.gravityScale = 0.5f;
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x, speed * v);
+            else if (h < 0 && !m_AtBot)
+            {
+                m_Player.Climb();
+                m_GoBot = true;
+            }
         }
-        climbLock = false;
     }
 
-    void OnTriggerExit2D(Collider2D collisionInfo)
+    void OnTriggerExit2D(Collider2D coll)
     {
-        Debug.Log(" OnTriggerExit2D  ");
-        Rigidbody2D rigidBody = player.GetComponent<Rigidbody2D>();
-        climbing = false;
-        player.GetComponent<Animator>().SetBool("IsClimbing", climbing);
-        rigidBody.velocity = new Vector2(0f, 0f);
-        rigidBody.gravityScale = 1f;
-        player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0);
-        Collider2D[] cols = player.GetComponents<Collider2D>();
-        foreach (Collider2D c in cols)
-        {
-            c.isTrigger = false;
-        }
-        climbLock = true;
+        //Arrete de grimper lorsqu'il sort du trigger
+        StopClimbing();
     }
 
-    void StopClimb()
+    void StopClimbing()
     {
-        climbing = false;
-        player.GetComponent<Animator>().SetBool("IsClimbing", climbing);
-        Rigidbody2D rigidBody = player.GetComponent<Rigidbody2D>();
-        rigidBody.gravityScale = 1f;
-        player.GetComponent<PlayerControl>().enabled = true;
-        player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0);
-        Collider2D[] cols = player.GetComponents<Collider2D>();
-        foreach (Collider2D c in cols)
-        {
-            c.isTrigger = false;
-        }
+        m_GoBot = false;
+        m_GoTop = false;
+        m_Player.StopClimbing();
     }
 }

@@ -4,22 +4,17 @@ using System.Collections;
 
 public class SwordScript : DamageSource {
 
-    private PlayerControl playerCtrl;
     private Animator anim;
 
 
 	// Use this for initialization
 	void Awake () {
-        playerCtrl = GameObject.Find("Character").GetComponent<PlayerControl>();
         anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (!playerCtrl.facingRight)
-            range = 2f;
-        else
-            range = 0.3f;
+        
 
         if(Input.GetButton("Fire1") && !attackLocked)
         {
