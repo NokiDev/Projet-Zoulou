@@ -17,5 +17,6 @@
 Library/
 Library\
 Temp/
+*.meta
 *.pidb
 .DS_Store
