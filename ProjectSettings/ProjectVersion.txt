@@ -1,2 +1,14 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+m_EditorVersion: 5.2.3f1
+=======
 m_EditorVersion: 5.2.2f1
+>>>>>>> f3ff3420b79c81b6041b32e7868683a0cabdeb79
+=======
+m_EditorVersion: 5.2.1f1
+>>>>>>> parent of f8aa181... menu hajime
+=======
+m_EditorVersion: 5.2.1f1
+>>>>>>> parent of f8aa181... menu hajime
 m_StandardAssetsVersion: 0

@@ -17,6 +17,10 @@
 Library/
 Library\
 Temp/
+<<<<<<< HEAD
 Temp\
+=======
+*.meta
+>>>>>>> parent of afaf28e... Update gitignore and reup .metafiles
 *.pidb
 .DS_Store
