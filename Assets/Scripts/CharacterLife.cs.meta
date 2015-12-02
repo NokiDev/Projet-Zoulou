@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 guid: 90f6f6d52ba91e640b7d5a2d43e77de8
 timeCreated: 1449053033
@@ -6,6 +7,15 @@ timeCreated: 1449053033
 guid: a6792049e2d1b442b93307a66d67a3b3
 timeCreated: 1449051016
 >>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
+guid: c1fdc3657e1515a4e8a38ddcf1e9f324
+timeCreated: 1449051269
+=======
+guid: 90f6f6d52ba91e640b7d5a2d43e77de8
+timeCreated: 1449053033
+>>>>>>> f3ff3420b79c81b6041b32e7868683a0cabdeb79
+>>>>>>> origin/master
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
